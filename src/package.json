@@ -1,5 +1,5 @@
 {
-    "name": "cloud_jobs_backend",
+    "name": "hero_manager_backend",
     "version": "1.0.0",
     "description": "",
     "main": "index.js",
@@ -21,6 +21,7 @@
         "passport": "^0.4.1",
         "passport-http-bearer": "^1.0.1",
         "passport-local": "^1.0.0",
-        "request": "^2.88.2"
+        "request": "^2.88.2",
+        "cors": "^2.8.5"
     }
 }

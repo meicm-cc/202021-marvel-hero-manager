@@ -9,6 +9,7 @@ const agenda = require('./agenda.js');
 const marvel = require('./marvel.js');
 const path = require('path');
 const { off } = require('process');
+const cors = require('cors');
 
 const PORT = process.env.PORT || 8080;
 const JWT_SECRET = process.env.JWT_SECRET || 'secret';
@@ -46,6 +47,8 @@ const start = async() => {
             return done(null, user, { scope: 'all' });
         });
     }));
+
+    app.use(cors());
 
     app.use(passport.initialize());
 
