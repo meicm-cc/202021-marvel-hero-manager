@@ -1,6 +1,6 @@
 //###############
 //CHANGE ME
-const BACKEND_URL = 'CHANGEME';
+const BACKEND_URL = 'http://localhost:8081';
 //###############
 
 const processStatistics = (data) => {
