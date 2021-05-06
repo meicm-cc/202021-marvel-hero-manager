@@ -46,7 +46,7 @@ const start = async(mongo) => {
         }
         console.log(`[AGENDA] gathered ${newComics.total} new Comics in ${newComics.series.length} Series`);
 
-        await db.insertStatistics(mongo.db, newComics);
+        await axios.post('http://hero_manager_statistics:8080/api/statistics', newComics);
 
         console.log('[AGENDA] ended job - gather data');
         return done(null, true);

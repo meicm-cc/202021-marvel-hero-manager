@@ -203,12 +203,5 @@ const loginListener = (e) => {
         });
     }
 
-    let dashboard = document.querySelector('.dashboard')
-    if (dashboard) {
-        const responseStatistics = await axios.get(`${BACKEND_URL}\api\statistics`)
-        const responseStatisticsLatest = await axios.get(`${BACKEND_URL}\api\statistics\latest`)
 
-        const statistics = responseStatistics.data
-        const latest = responseStatisticsLatest.data
-    }
 })()

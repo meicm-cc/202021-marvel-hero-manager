@@ -132,36 +132,7 @@ const deleteSeries = (db, id) => {
     });
 }
 
-const getComic = (db, id) => {
-    return new Promise((resolve, reject) => {
-        const comics = db.collection('comics');
-        comics.findOne({ id: id }, (err, doc) => {
-            if (err) return reject(err);
-            return resolve(doc);
-        });
-    });
-}
 
-const insertComic = (db, comic) => {
-    return new Promise((resolve, reject) => {
-        const comics = db.collection('comics');
-
-        comics.insertOne(comic, (err, result) => {
-            if (err) return reject(err);
-            return resolve(result);
-        });
-    });
-}
-
-const getComics = (db) => {
-    return new Promise((resolve, reject) => {
-        const comics = db.collection('comics');
-        comics.find({}).toArray((err, documents) => {
-            if (err) return reject(err);
-            return resolve(documents);
-        });
-    });
-}
 
 const getComicsForSeries = (db, seriesID) => {
     return new Promise((resolve, reject) => {
@@ -183,51 +154,11 @@ const searchComics = (db, search) => {
     });
 }
 
-const insertStatistics = (db, statistics) => {
-    return new Promise((resolve, reject) => {
-        const statisticsCollection = db.collection('statistics');
-        statistics.date = new Date()
-        statisticsCollection.insertOne(statistics, (err, result) => {
-            if (err) return reject(err);
-            return resolve(result);
-        });
-    });
-}
-
-const getStatistics = (db) => {
-    return new Promise((resolve, reject) => {
-        const statistics = db.collection('statistics');
-        statistics.find({}).sort({ date: -1 }).toArray((err, documents) => {
-            if (err) return reject(err);
-            return resolve(documents);
-        });
-    });
-}
-
-const getStatisticsLatest = (db) => {
-    return new Promise((resolve, reject) => {
-        const statistics = db.collection('statistics');
-        let lastWeek = new Date();
-        lastWeek.setDate(lastWeek.getDate() - 7);
-        lastWeek.setHours(0, 0, 0, 0);
-        statistics.find({ date: { $gte: lastWeek } }).sort({ date: -1 }).toArray((err, documents) => {
-            if (err) return reject(err);
-            return resolve(documents);
-        });
-    });
-}
-
 module.exports = {
     connect: connect,
     insertSeries: insertSeries,
     getSeries: getSeries,
-    insertComic: insertComic,
-    getComic: getComic,
-    getComics: getComics,
     searchComics: searchComics,
     getComicsForSeries: getComicsForSeries,
-    deleteSeries: deleteSeries,
-    insertStatistics: insertStatistics,
-    getStatistics: getStatistics,
-    getStatisticsLatest: getStatisticsLatest
+    deleteSeries: deleteSeries
 }
