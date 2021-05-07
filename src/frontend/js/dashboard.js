@@ -1,6 +1,8 @@
 //###############
 //CHANGE ME
 const BACKEND_URL = 'http://localhost:8081';
+const STATISTICS_URL = 'http://localhost:8083';
+
 //###############
 
 const processStatistics = (data) => {
@@ -26,8 +28,8 @@ const processStatistics = (data) => {
 
 (async() => {
 
-    const responseStatistics = await axios.get(`${BACKEND_URL}/api/statistics`)
-    const responseStatisticsLatest = await axios.get(`${BACKEND_URL}/api/statistics/latest`)
+    const responseStatistics = await axios.get(`${STATISTICS_URL}/api/statistics`)
+    const responseStatisticsLatest = await axios.get(`${STATISTICS_URL}/api/statistics/latest`)
 
     const statistics = responseStatistics.data
     const latest = responseStatisticsLatest.data

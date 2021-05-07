@@ -1,6 +1,7 @@
 //###############
 //CHANGE ME
 const BACKEND_URL = 'http://localhost:8081';
+const MARVEL_URL = 'http://localhost:8082';
 //###############
 
 const insertSearchResult = (comic, tbody) => {
@@ -120,7 +121,7 @@ const searchLocalComics = async(searchTerms) => {
 }
 const queryAPI = (search, local = false, offset = 1, limit = 10) => {
     return new Promise((resolve, reject) => {
-        url = `${BACKEND_URL}/api/search`;
+        url = `${MARVEL_URL}/api/search`;
         if (local) url = `${BACKEND_URL}/api/local`;
         const parameters = {
             search: search,
@@ -202,12 +203,4 @@ const loginListener = (e) => {
         });
     }
 
-    let dashboard = document.querySelector('.dashboard')
-    if (dashboard) {
-        const responseStatistics = await axios.get(`${BACKEND_URL}\api\statistics`)
-        const responseStatisticsLatest = await axios.get(`${BACKEND_URL}\api\statistics\latest`)
-
-        const statistics = responseStatistics.data
-        const latest = responseStatisticsLatest.data
-    }
 })()
