@@ -1,0 +1,30 @@
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: hero-manager-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/force-ssl-redirect: "false"
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              serviceName: hero-manager-frontend
+              servicePort: 8080
+          - path: /api/marvel/
+            pathType: Prefix
+            backend:
+              serviceName: hero-manager-marvel
+              servicePort: 8082
+          - path: /api/statistics/
+            pathType: Prefix
+            backend:
+              serviceName: hero-manager-statistics
+              servicePort: 8083
+          - path: /api/
+            pathType: Prefix
+            backend:
+              serviceName: hero-manager-backend
+              servicePort: 8081

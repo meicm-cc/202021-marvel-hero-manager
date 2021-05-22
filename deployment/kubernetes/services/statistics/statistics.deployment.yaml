@@ -22,11 +22,8 @@ spec:
             - containerPort: 8083
           resources: {}
           env:
-            - name: DB_HOST
-              value: hero-manager-database
-            - name: DB_PORT
-              value: "27017"
-            - name: DB_NAME
-              value: heroManager
             - name: PORT
               value: "8083"
+          envFrom:
+            - configMapRef:
+                name: hero-manager-database-configmap

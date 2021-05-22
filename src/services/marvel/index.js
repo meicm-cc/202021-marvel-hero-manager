@@ -13,7 +13,7 @@ const start = async() => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
-    app.post('/api/search', async(request, response) => {
+    app.post('/api/marvel/search', async(request, response) => {
         let search = request.body.search;
         console.log(`[Search] ${search}`);
         let limit = request.body.limit || 10;
@@ -22,7 +22,7 @@ const start = async() => {
         return response.send(data);
     });
 
-    app.post('/api/series/:id/comics', async(request, response) => {
+    app.post('/api/marvel/series/:id/comics', async(request, response) => {
         let seriesID = request.params.id;
         console.log(`[Comics for Series] ${seriesID}`);
         let data = await marvel.getComicsForSeries({ id: seriesID })

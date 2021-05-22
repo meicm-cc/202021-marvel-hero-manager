@@ -22,15 +22,12 @@ spec:
             - containerPort: 8084
           resources: {}
           env:
-            - name: DB_HOST
-              value: hero-manager-database
-            - name: DB_PORT
-              value: "27017"
-            - name: DB_NAME
-              value: heroManager
             - name: PORT
               value: "8081"
             - name: MARVEL_SERVICE_URL
               value: "http://hero-manager-marvel:8082"
             - name: STATISTICS_SERVICE_URL
               value: "http://hero-manager-statistics:8083"
+          envFrom:
+            - configMapRef:
+                name: hero-manager-database-configmap

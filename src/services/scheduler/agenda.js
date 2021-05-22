@@ -29,7 +29,7 @@ const start = async(mongo) => {
             series: []
         }
         for (let series of seriesDocuments) {
-            let { data: comics } = await axios.post(MARVEL_SERVICE_URL + '/api/series/' + series.id + '/comics')
+            let { data: comics } = await axios.post(MARVEL_SERVICE_URL + '/api/marvel/series/' + series.id + '/comics')
             for (let comic of comics) {
                 let comicDoc = await db.getComic(mongo.db, comic.id)
                 if (!comicDoc) {

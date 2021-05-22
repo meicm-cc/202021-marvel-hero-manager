@@ -25,8 +25,8 @@ spec:
             - name: MARVEL_URL
               value: https://gateway.marvel.com
             - name: MARVEL_PUBLIC_KEY
-              value: <<CHANGE-ME>>
+              value: ***REMOVED***
             - name: MARVEL_PRIVATE_KEY
-              value: <<CHANGE-ME>>
+              value: ***REMOVED***
             - name: PORT
               value: "8082"
