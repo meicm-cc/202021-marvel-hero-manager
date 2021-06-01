@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hero-manager-backend
+  labels:
+    name: hero-manager-backend
+spec:
+  selector:
+    matchLabels:
+      name: hero-manager-backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        name: hero-manager-backend
+    spec:
+      containers:
+        - name: hero-manager-backend
+          image: 904721383298.dkr.ecr.eu-west-2.amazonaws.com/meicm_ecr:hero_manager_backend_image_1.0.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8081
+          resources: {}
+          env:
+            - name: PORT
+              value: "8081"
+          envFrom:
+            - configMapRef:
+                name: hero-manager-database-configmap

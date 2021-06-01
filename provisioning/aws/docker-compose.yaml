@@ -1,0 +1,26 @@
+services:
+    hero_manager_marvel:
+        image: 904721383298.dkr.ecr.eu-west-2.amazonaws.com/meicm_ecr:hero_manager_marvel_image_1.0.0
+        build:
+            context: ../../src/
+            dockerfile: ../deployment/kubernetes/services/marvel/Dockerfile
+    hero_manager_frontend:
+        image: 904721383298.dkr.ecr.eu-west-2.amazonaws.com/meicm_ecr:hero_manager_frontend_image_1.0.0
+        build:
+            context: ../../src/
+            dockerfile: ../deployment/kubernetes/services/frontend/Dockerfile
+    hero_manager_backend:
+        image: 904721383298.dkr.ecr.eu-west-2.amazonaws.com/meicm_ecr:hero_manager_backend_image_1.0.0
+        build:
+            context: ../../src/
+            dockerfile: ../deployment/kubernetes/services/backend/Dockerfile
+    hero_manager_statistics:
+        image: 904721383298.dkr.ecr.eu-west-2.amazonaws.com/meicm_ecr:hero_manager_statistics_image_1.0.0
+        build:
+            context: ../../src/
+            dockerfile: ../deployment/kubernetes/services/statistics/Dockerfile
+    hero_manager_scheduler:
+        image: 904721383298.dkr.ecr.eu-west-2.amazonaws.com/meicm_ecr:hero_manager_scheduler_image_1.0.0
+        build:
+            context: ../../src/
+            dockerfile: ../deployment/kubernetes/services/scheduler/Dockerfile
