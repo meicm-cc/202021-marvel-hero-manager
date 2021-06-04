@@ -13,6 +13,12 @@ const start = async() => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
+    app.get('/', async(request, response) => {
+        console.log("[Health Check] GET")
+        return response.send({ msg: 'Healthy' });
+    });
+
+
     app.post('/api/marvel/search', async(request, response) => {
         let search = request.body.search;
         console.log(`[Search] ${search}`);

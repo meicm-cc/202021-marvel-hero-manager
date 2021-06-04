@@ -1,0 +1,10 @@
+bases:
+  - ../kubernetes
+  - ingress/deploy.yaml
+  - ingress/ingress.yaml
+patches:
+  - services/backend/backend.deployment.yaml
+  - services/frontend/frontend.deployment.yaml
+  - services/marvel/marvel.deployment.yaml
+  - services/scheduler/scheduler.deployment.yaml
+  - services/statistics/statistics.deployment.yaml

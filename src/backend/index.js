@@ -51,6 +51,11 @@ const start = async() => {
     app.use(express.json());
     app.use(express.urlencoded({ extended: true }));
 
+    app.get('/', async(request, response) => {
+        console.log("[Health Check] GET")
+        return response.send({ msg: 'Healthy' });
+    });
+
 
     app.post('/api/signin', passport.authenticate('local', { session: false }), async(request, response) => {
         let user = request.user;

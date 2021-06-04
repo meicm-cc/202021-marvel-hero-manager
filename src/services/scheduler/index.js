@@ -12,6 +12,11 @@ const start = async() => {
     console.log("Agenda setup")
     agenda.start(db);
 
+    app.get('/', async(request, response) => {
+        console.log("[Health Check] GET")
+        return response.send({ msg: 'Healthy' });
+    });
+
     app.listen(PORT, () => console.log(`Marvel Hero Manager API listening on port ${PORT}`));
 }
 start();
