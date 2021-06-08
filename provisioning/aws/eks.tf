@@ -103,6 +103,24 @@ resource "aws_iam_role_policy_attachment" "meicm-AmazonEC2ContainerRegistryReadO
   role       = aws_iam_role.meicm_worker_nodes.name
 }
 
+resource "aws_iam_role_policy" "eks_cluster_ingress_loadbalancer_creation" {
+name   = "eks-cluster-ingress-loadbalancer-creation"
+role   = aws_iam_role.meicm_eks.name
+policy = <<POLICY
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": [
+        "ec2:DescribeAccountAttributes"
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+POLICY
+}
 
 output "aws_eks_cluster_name" {
   value       = aws_eks_cluster.meicm_eks.name
